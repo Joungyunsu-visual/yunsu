@@ -1,175 +1,214 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JOUNG YUNSU — Media Artist</title>
-    <meta name="description" content="정윤수 미디어아트 작가 포트폴리오. 전시, 프로젝트, 퍼포먼스 아카이브.">
+    <title>JNGYS — Media Artist</title>
+    <meta name="description"
+        content="Joung Yunsu — Media artist based in Seoul. Exhibition, project, and performance archive.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+
+    <!-- Ambient Aura Background -->
+    <div class="ambient-bg">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+
     <!-- Navigation -->
     <nav id="nav">
-        <div class="nav-left">
-            <a href="#" class="nav-logo">JOUNG YUNSU</a>
-        </div>
-        <div class="nav-right">
-            <a href="#works" class="nav-link">Works</a>
+        <a href="#" class="nav-logo">JNGYS</a>
+        <div class="nav-links">
+            <a href="#works" class="nav-link">Work</a>
             <a href="#about" class="nav-link">About</a>
             <a href="#contact" class="nav-link">Contact</a>
+            <a href="https://instagram.com/" target="_blank" class="nav-link">Instagram</a>
+            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">☾</button>
         </div>
     </nav>
 
-    <!-- Hero Section — Kinetic Typography -->
+    <!-- Hero / Intro Section -->
     <section id="hero">
-        <div class="hero-image-container">
-            <img src="img/hero_artwork.png" alt="Media Art" class="hero-image" id="heroImage">
+        <div class="hero-left">
+            <p class="hero-desc">Joung-Yunsu observes how a person as an individual senses the world in modern civil
+                society and focuses on the expandability of the sense of digital society. The artist asks about personal
+                experience of the world through interactive art that interacts with the audience that "see themselves
+                sensing", or through data visual artwork that accumulates the audience's experiences by data.</p>
         </div>
-        <div class="hero-text-layer">
-            <div class="hero-line hero-line-1">
-                <span class="kinetic-word" data-speed="0.02">MEDIA</span>
+        <div class="hero-right">
+            <div class="hero-image-box">
+                <!-- User provided image -->
+                <img src="./img/hero.png" alt="Hero Art" />
             </div>
-            <div class="hero-line hero-line-2">
-                <span class="kinetic-word" data-speed="-0.015">ART</span>
-                <span class="kinetic-word hero-accent" data-speed="0.025">IST</span>
-            </div>
-            <div class="hero-line hero-line-3">
-                <span class="kinetic-word" data-speed="-0.02">JOUNG</span>
-            </div>
-            <div class="hero-line hero-line-4">
-                <span class="kinetic-word" data-speed="0.018">YUN</span>
-                <span class="kinetic-word" data-speed="-0.012">SU</span>
-            </div>
-        </div>
-        <div class="hero-meta">
-            <div class="hero-meta-item">
-                <span class="meta-label">Based in</span>
-                <span class="meta-value">Seoul, KR</span>
-            </div>
-            <div class="hero-meta-item">
-                <span class="meta-label">Discipline</span>
-                <span class="meta-value">Media Art / AV</span>
-            </div>
-        </div>
-        <div class="scroll-indicator">
-            <div class="scroll-line"></div>
-            <span>SCROLL</span>
         </div>
     </section>
 
-    <!-- Works — Bento Grid -->
+    <!-- Works Section -->
     <section id="works">
-        <div class="section-header">
-            <h2 class="section-title">SELECTED WORKS</h2>
-            <p class="section-subtitle">Exhibition · Project · Performance</p>
-        </div>
-        <div class="bento-grid">
-            <!-- Large feature card -->
-            <div class="bento-card bento-large" data-category="exhibition">
-                <div class="card-image">
-                    <img src="img/project_crystals.png" alt="Crystals" loading="lazy">
-                </div>
-                <div class="card-overlay">
-                    <span class="card-year">2021</span>
-                    <h3 class="card-title">Crystals<br><span class="card-title-sub">가상결정체</span></h3>
-                    <span class="card-tag">Solo Exhibition</span>
-                </div>
-            </div>
+        <h2 class="section-title">Work</h2>
 
-            <!-- Medium card -->
-            <div class="bento-card bento-medium" data-category="exhibition">
-                <div class="card-image">
-                    <img src="img/project_laser.png" alt="Hyperdrive" loading="lazy">
-                </div>
-                <div class="card-overlay">
-                    <span class="card-year">2023</span>
-                    <h3 class="card-title">Hyperdrive</h3>
-                    <span class="card-tag">Seoul Light Bitseom</span>
-                </div>
-            </div>
+        <div class="works-grid">
 
-            <!-- Small card -->
-            <div class="bento-card bento-small" data-category="project">
-                <div class="card-image">
-                    <img src="img/project_commercial.png" alt="Samsung SDI" loading="lazy">
+            <a class="work-card fade-in" href="#">
+                <div class="work-image-placeholder">
+                    <span class="placeholder-label">Image</span>
                 </div>
-                <div class="card-overlay">
-                    <span class="card-year">2022</span>
-                    <h3 class="card-title">PRIMX</h3>
-                    <span class="card-tag">Samsung SDI</span>
+                <div class="work-meta">
+                    <span class="work-title">Atelier Nodeul Opening Exhibition</span>
+                    <span class="work-year">2025</span>
                 </div>
-            </div>
+            </a>
 
-            <!-- Small card -->
-            <div class="bento-card bento-small" data-category="performance">
-                <div class="card-image">
-                    <img src="img/project_performance.png" alt="Save The Planet" loading="lazy">
+            <a class="work-card fade-in" href="#">
+                <div class="work-image-placeholder">
+                    <span class="placeholder-label">Image</span>
                 </div>
-                <div class="card-overlay">
-                    <span class="card-year">2022</span>
-                    <h3 class="card-title">Save The Planet</h3>
-                    <span class="card-tag">Performance</span>
+                <div class="work-meta">
+                    <span class="work-title">Digital November — MetaSensing</span>
+                    <span class="work-year">2025</span>
                 </div>
-            </div>
+            </a>
 
-            <!-- Medium card -->
-            <div class="bento-card bento-medium" data-category="exhibition">
-                <div class="card-image">
-                    <img src="img/project_data.png" alt="Paradise Art Lab" loading="lazy">
+            <a class="work-card fade-in" href="#">
+                <div class="work-image-placeholder">
+                    <span class="placeholder-label">Image</span>
                 </div>
-                <div class="card-overlay">
-                    <span class="card-year">2024</span>
-                    <h3 class="card-title">Paradise<br>Art Lab</h3>
-                    <span class="card-tag">Festival</span>
+                <div class="work-meta">
+                    <span class="work-title">Patek Philippe Brand Media Art</span>
+                    <span class="work-year">2025</span>
                 </div>
-            </div>
+            </a>
 
-            <!-- Large feature card -->
-            <div class="bento-card bento-large" data-category="exhibition">
-                <div class="card-image">
-                    <img src="img/hero_artwork.png" alt="Printf Human Odyssey" loading="lazy">
+            <a class="work-card fade-in" href="#">
+                <div class="work-image-placeholder">
+                    <span class="placeholder-label">Image</span>
                 </div>
-                <div class="card-overlay">
-                    <span class="card-year">2022</span>
-                    <h3 class="card-title">Printf<br><span class="card-title-sub">"Human Odyssey"</span></h3>
-                    <span class="card-tag">천안시립미술관</span>
+                <div class="work-meta">
+                    <span class="work-title">Paradise Art Lab Festival</span>
+                    <span class="work-year">2024</span>
                 </div>
-            </div>
+            </a>
+
+            <a class="work-card fade-in" href="#">
+                <div class="work-image-placeholder">
+                    <span class="placeholder-label">Image</span>
+                </div>
+                <div class="work-meta">
+                    <span class="work-title">Hyperdrive — Seoul Light Bitseom</span>
+                    <span class="work-year">2023</span>
+                </div>
+            </a>
+
+            <a class="work-card fade-in" href="#">
+                <div class="work-image-placeholder">
+                    <span class="placeholder-label">Image</span>
+                </div>
+                <div class="work-meta">
+                    <span class="work-title">Hyundai Mobis Lobby Media Art</span>
+                    <span class="work-year">2023</span>
+                </div>
+            </a>
+
+            <a class="work-card fade-in" href="#">
+                <div class="work-image-placeholder">
+                    <span class="placeholder-label">Image</span>
+                </div>
+                <div class="work-meta">
+                    <span class="work-title">Samsung SDI PRIMX Exhibition</span>
+                    <span class="work-year">2022</span>
+                </div>
+            </a>
+
+            <a class="work-card fade-in" href="#">
+                <div class="work-image-placeholder">
+                    <span class="placeholder-label">Image</span>
+                </div>
+                <div class="work-meta">
+                    <span class="work-title">Printf "Human Odyssey"</span>
+                    <span class="work-year">2022</span>
+                </div>
+            </a>
+
+            <a class="work-card fade-in" href="#">
+                <div class="work-image-placeholder">
+                    <span class="placeholder-label">Image</span>
+                </div>
+                <div class="work-meta">
+                    <span class="work-title">Save The Planet</span>
+                    <span class="work-year">2022</span>
+                </div>
+            </a>
+
+            <a class="work-card fade-in" href="#">
+                <div class="work-image-placeholder">
+                    <span class="placeholder-label">Image</span>
+                </div>
+                <div class="work-meta">
+                    <span class="work-title">Beyond Human — Emotion & History</span>
+                    <span class="work-year">2022</span>
+                </div>
+            </a>
+
+            <a class="work-card fade-in" href="#">
+                <div class="work-image-placeholder">
+                    <span class="placeholder-label">Image</span>
+                </div>
+                <div class="work-meta">
+                    <span class="work-title">Crystals — Virtual Crystalline</span>
+                    <span class="work-year">2021</span>
+                </div>
+            </a>
+
+            <a class="work-card fade-in" href="#">
+                <div class="work-image-placeholder">
+                    <span class="placeholder-label">Image</span>
+                </div>
+                <div class="work-meta">
+                    <span class="work-title">Data Holocene</span>
+                    <span class="work-year">2020</span>
+                </div>
+            </a>
+
         </div>
     </section>
 
     <!-- About Section -->
     <section id="about">
-        <div class="about-grid">
-            <div class="about-left">
-                <h2 class="about-title">ABOUT</h2>
+        <h2 class="section-title">About</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p>Joung Yunsu is a media artist based in Seoul, South Korea. Working at the intersection of digital
+                    technology and contemporary art, he creates immersive experiences through installation, performance,
+                    and audiovisual work.</p>
+                <p>His practice explores the poetic potential of data, light, and sound — transforming digital processes
+                    into sensory, human experiences.</p>
             </div>
-            <div class="about-right">
-                <p class="about-text">
-                    정윤수는 서울을 기반으로 활동하는 미디어아트 작가입니다. 
-                    디지털 기술과 예술의 경계에서 새로운 시각적 경험을 탐구하며, 
-                    설치, 퍼포먼스, 오디오비주얼 등 다양한 매체를 통해 작업합니다.
-                </p>
-                <div class="about-stats">
-                    <div class="stat-item">
-                        <span class="stat-number">10+</span>
-                        <span class="stat-label">Exhibitions</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number">20+</span>
-                        <span class="stat-label">Projects</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number">15+</span>
-                        <span class="stat-label">Press</span>
-                    </div>
+            <div class="about-details">
+                <div class="about-block">
+                    <h4 class="about-label">Awards</h4>
+                    <ul class="about-list">
+                        <li>Paradise Art Lab, 2024</li>
+                        <li>Nabi Art Center Creative Talent, 2021</li>
+                    </ul>
                 </div>
-                <div class="about-clients">
-                    <span class="client-label">Clients & Collaborators</span>
-                    <div class="client-list">
+                <div class="about-block">
+                    <h4 class="about-label">Lectures</h4>
+                    <ul class="about-list">
+                        <li>Seoul National University — Visual Design, 2024</li>
+                        <li>SADI — TouchDesigner Workshop, 2024</li>
+                        <li>Seoul Institute of the Arts — Digital Art, 2025</li>
+                    </ul>
+                </div>
+                <div class="about-block">
+                    <h4 class="about-label">Clients</h4>
+                    <div class="client-grid">
                         <span>Samsung SDI</span>
                         <span>Hyundai Mobis</span>
                         <span>The Hyundai</span>
@@ -178,6 +217,8 @@
                         <span>Patek Philippe</span>
                         <span>Paradise Art Lab</span>
                         <span>Raemian</span>
+                        <span>Kolon</span>
+                        <span>Newmix Coffee</span>
                     </div>
                 </div>
             </div>
@@ -186,25 +227,21 @@
 
     <!-- Contact Section -->
     <section id="contact">
+        <h2 class="section-title">Contact</h2>
         <div class="contact-content">
-            <h2 class="contact-title">LET'S<br>CONNECT</h2>
-            <div class="contact-links">
-                <a href="mailto:joungyunsu@gmail.com" class="contact-link">
-                    <span class="link-label">Email</span>
-                    <span class="link-value">joungyunsu@gmail.com</span>
-                </a>
-                <a href="https://joungyunsu.com" target="_blank" class="contact-link">
-                    <span class="link-label">Website</span>
-                    <span class="link-value">joungyunsu.com</span>
-                </a>
-            </div>
+            <a href="mailto:joungyunsu@gmail.com" class="contact-link" id="contact-email">joungyunsu@gmail.com</a>
+            <a href="https://joungyunsu.com" target="_blank" class="contact-link"
+                id="contact-website">joungyunsu.com</a>
+            <a href="https://instagram.com/" target="_blank" class="contact-link" id="contact-instagram">Instagram</a>
         </div>
-        <footer class="footer">
-            <span>© 2026 JOUNG YUNSU</span>
-            <span>Seoul, South Korea</span>
-        </footer>
     </section>
+
+    <!-- Footer -->
+    <footer id="footer">
+        <span>&copy; 2026 Joung Yunsu</span>
+    </footer>
 
     <script src="script.js"></script>
 </body>
+
 </html>
