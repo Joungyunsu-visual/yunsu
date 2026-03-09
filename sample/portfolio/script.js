@@ -41,18 +41,59 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Dark / Light 토글
-    const toggle = document.getElementById('theme-toggle');
-    const saved = localStorage.getItem('theme');
-    if (saved === 'dark') {
-        document.body.classList.add('dark');
-        toggle.textContent = '☀';
+    // Language / 번역 토글 & Blur Reveal Effect
+    const toggle = document.getElementById('lang-toggle');
+    let currentLang = 'en'; // default
+
+    // Translatable elements
+    const translatables = document.querySelectorAll('[data-en][data-ko]');
+    const heroDesc = document.querySelector('.hero-desc');
+
+    function blurReveal(element, text) {
+        element.innerHTML = '';
+
+        // Split text into words and space them properly
+        const words = text.split(' ');
+
+        words.forEach((word) => {
+            const span = document.createElement('span');
+            span.innerHTML = word + '&nbsp;'; // 공백 유지
+            span.style.display = 'inline-block';
+            span.style.opacity = '0'; // 처음에 안 보임
+
+            // 각 단어마다 무작위 지연 시간 생성 (0초 ~ 1.5초 사이)
+            const randomDelay = Math.random() * 1.5;
+
+            // 단순 디졸브(투명도 변화) 효과로 부드럽게 나타남
+            span.style.transition = `opacity 1.5s ease ${randomDelay}s`;
+            element.appendChild(span);
+
+            // Trigger animation in the next frame
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                    span.style.opacity = '1';
+                });
+            });
+        });
     }
+
+    // Initial Animation
+    if (heroDesc) {
+        blurReveal(heroDesc, heroDesc.getAttribute(`data-${currentLang}`));
+    }
+
     toggle.addEventListener('click', () => {
-        document.body.classList.toggle('dark');
-        const isDark = document.body.classList.contains('dark');
-        toggle.textContent = isDark ? '☀' : '☾';
-        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        currentLang = currentLang === 'en' ? 'ko' : 'en';
+        toggle.textContent = currentLang === 'en' ? 'KR' : 'EN';
+
+        translatables.forEach(el => {
+            // 히어로 텍스트는 단어별 흐림 해제, 그 외는 즉시 변경
+            if (el.classList.contains('hero-desc')) {
+                blurReveal(el, el.getAttribute(`data-${currentLang}`));
+            } else {
+                el.textContent = el.getAttribute(`data-${currentLang}`);
+            }
+        });
     });
 
 });

@@ -10,34 +10,34 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <!-- Ambient Aura Background -->
-    <div class="ambient-bg">
-        <div class="orb orb-1"></div>
-        <div class="orb orb-2"></div>
-        <div class="orb orb-3"></div>
-    </div>
+
 
     <!-- Navigation -->
     <nav id="nav">
         <a href="#" class="nav-logo">JNGYS</a>
         <div class="nav-links">
-            <a href="#works" class="nav-link">Work</a>
-            <a href="#about" class="nav-link">About</a>
-            <a href="#contact" class="nav-link">Contact</a>
+            <a href="#works" class="nav-link" data-en="Work" data-ko="작업">Work</a>
+            <a href="#about" class="nav-link" data-en="About" data-ko="소개">About</a>
+            <a href="#contact" class="nav-link" data-en="Contact" data-ko="연락처">Contact</a>
             <a href="https://instagram.com/" target="_blank" class="nav-link">Instagram</a>
-            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">☾</button>
+            <button id="lang-toggle" class="lang-toggle" aria-label="Toggle language">KR</button>
         </div>
     </nav>
 
     <!-- Hero / Intro Section -->
     <section id="hero">
         <div class="hero-left">
-            <p class="hero-desc">Joung-Yunsu observes how a person as an individual senses the world in modern civil
+            <p class="hero-desc"
+                data-en="Joung-Yunsu observes how a person as an individual senses the world in modern civil society and focuses on the expandability of the sense of digital society. The artist asks about personal experience of the world through interactive art that interacts with the audience that 'see themselves sensing', or through data visual artwork that accumulates the audience's experiences by data."
+                data-ko="정윤수는 현대 시민 사회에서 개인이 세계를 어떻게 감각하는지 관찰하고, 디지털 사회에서 감각의 확장성에 주목합니다. 작가는 '감각하는 자신을 보는' 관객과 상호작용하는 인터랙티브 아트, 혹은 관객의 경험을 데이터로 축적하는 데이터 시각화 작업을 통해 세계에 대한 개인적 경험을 질문합니다.">
+                Joung-Yunsu observes how a person as an individual senses the world in modern civil
                 society and focuses on the expandability of the sense of digital society. The artist asks about personal
                 experience of the world through interactive art that interacts with the audience that "see themselves
                 sensing", or through data visual artwork that accumulates the audience's experiences by data.</p>
@@ -78,7 +78,9 @@
 
             <a class="work-card fade-in" href="#">
                 <div class="work-image-placeholder">
-                    <span class="placeholder-label">Image</span>
+                    <img style="width: 100%; height: 100%; object-fit: cover;"
+                        src="https://res.cloudinary.com/dbgr7vngr/image/upload/v1773050566/Patek_pqk8gp.png"
+                        alt="Patek Philippe Brand Media Art" loading="lazy">
                 </div>
                 <div class="work-meta">
                     <span class="work-title">Patek Philippe Brand Media Art</span>
@@ -88,7 +90,9 @@
 
             <a class="work-card fade-in" href="#">
                 <div class="work-image-placeholder">
-                    <span class="placeholder-label">Image</span>
+                    <img style="width: 100%; height: 100%; object-fit: cover;"
+                        src="https://res.cloudinary.com/dbgr7vngr/image/upload/v1773048771/Paradise_%EA%B3%B5%EC%83%9D%ED%95%98%EB%8A%94_%EB%AC%B4%EB%8A%AC_7_tt4gsf.jpg"
+                        alt="Paradise Art Lab Festival" loading="lazy">
                 </div>
                 <div class="work-meta">
                     <span class="work-title">Paradise Art Lab Festival</span>
@@ -98,7 +102,9 @@
 
             <a class="work-card fade-in" href="#">
                 <div class="work-image-placeholder">
-                    <span class="placeholder-label">Image</span>
+                    <img style="width: 100%; height: 100%; object-fit: cover;"
+                        src="https://res.cloudinary.com/dbgr7vngr/image/upload/v1773048771/Paradise_%EA%B3%B5%EC%83%9D%ED%95%98%EB%8A%94_%EB%AC%B4%EB%8A%AC_7_tt4gsf.jpg"
+                        alt="Hyperdrive — Seoul Light Bitseom" loading="lazy">
                 </div>
                 <div class="work-meta">
                     <span class="work-title">Hyperdrive — Seoul Light Bitseom</span>
@@ -108,7 +114,9 @@
 
             <a class="work-card fade-in" href="#">
                 <div class="work-image-placeholder">
-                    <span class="placeholder-label">Image</span>
+                    <img style="width: 100%; height: 100%; object-fit: cover;"
+                        src="https://res.cloudinary.com/dbgr7vngr/image/upload/v1773048694/Hyundai_Mobis_pwtafd.png"
+                        alt="Hyundai Mobis Lobby Media Art" loading="lazy">
                 </div>
                 <div class="work-meta">
                     <span class="work-title">Hyundai Mobis Lobby Media Art</span>
@@ -128,7 +136,9 @@
 
             <a class="work-card fade-in" href="#">
                 <div class="work-image-placeholder">
-                    <span class="placeholder-label">Image</span>
+                    <img style="width: 100%; height: 100%; object-fit: cover;"
+                        src="https://res.cloudinary.com/dbgr7vngr/image/upload/v1773049103/%EC%B2%9C%EC%95%88%EC%8B%9C%EB%A6%BD%EB%AF%B8%EC%88%A0%EA%B4%80_01_%EA%B2%B0%EA%B3%BC_zfkoj1.webp"
+                        alt="Printf Human Odyssey" loading="lazy">
                 </div>
                 <div class="work-meta">
                     <span class="work-title">Printf "Human Odyssey"</span>
@@ -138,7 +148,9 @@
 
             <a class="work-card fade-in" href="#">
                 <div class="work-image-placeholder">
-                    <span class="placeholder-label">Image</span>
+                    <img style="width: 100%; height: 100%; object-fit: cover;"
+                        src="https://res.cloudinary.com/dbgr7vngr/image/upload/v1773048656/%EC%84%B8%EC%9D%B4%EB%B8%8C%EB%8D%94%ED%94%8C%EB%9E%98%EB%8B%9B_9_cyekd3.jpg"
+                        alt="Save The Planet" loading="lazy">
                 </div>
                 <div class="work-meta">
                     <span class="work-title">Save The Planet</span>
@@ -184,10 +196,14 @@
         <h2 class="section-title">About</h2>
         <div class="about-content">
             <div class="about-text">
-                <p>Joung Yunsu is a media artist based in Seoul, South Korea. Working at the intersection of digital
+                <p data-en="Joung Yunsu is a media artist based in Seoul, South Korea. Working at the intersection of digital technology and contemporary art, he creates immersive experiences through installation, performance, and audiovisual work."
+                    data-ko="정윤수는 대한민국 서울을 기반으로 활동하는 미디어 아티스트입니다. 디지털 기술과 현대 미술의 접점에서 설치, 퍼포먼스, 시청각 작업을 통해 몰입형 경험을 창조합니다.">
+                    Joung Yunsu is a media artist based in Seoul, South Korea. Working at the intersection of digital
                     technology and contemporary art, he creates immersive experiences through installation, performance,
                     and audiovisual work.</p>
-                <p>His practice explores the poetic potential of data, light, and sound — transforming digital processes
+                <p data-en="His practice explores the poetic potential of data, light, and sound — transforming digital processes into sensory, human experiences."
+                    data-ko="그의 작업은 데이터, 빛, 소리의 시적인 잠재력을 탐구하며, 디지털 과정을 감각적이고 인간적인 경험으로 변환합니다.">His practice explores the
+                    poetic potential of data, light, and sound — transforming digital processes
                     into sensory, human experiences.</p>
             </div>
             <div class="about-details">
