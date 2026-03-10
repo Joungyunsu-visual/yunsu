@@ -96,4 +96,151 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // Work Modal Logic
+    const workCards = document.querySelectorAll('.work-card');
+    const modal = document.getElementById('work-modal');
+    const modalBody = document.getElementById('modal-body');
+
+    if (modal && modalBody) {
+        const closeModal = modal.querySelector('.close-modal');
+
+        workCards.forEach(card => {
+            card.addEventListener('click', (e) => {
+                e.preventDefault();
+                const titleElement = card.querySelector('.work-title');
+                const yearElement = card.querySelector('.work-year');
+
+                const title = titleElement ? titleElement.textContent : 'Untitled';
+                const year = yearElement ? yearElement.textContent : '';
+
+                const imgEl = card.querySelector('img');
+                const mainImgSrc = imgEl ? imgEl.src : '';
+
+                let extraImages = [];
+                const imagesAttr = card.getAttribute('data-images');
+                if (imagesAttr) {
+                    try {
+                        extraImages = JSON.parse(imagesAttr);
+                    } catch (e) { }
+                }
+
+                const desc = card.getAttribute('data-desc') || '';
+
+                let credits = null;
+                const creditsAttr = card.getAttribute('data-credits');
+                if (creditsAttr) {
+                    try {
+                        credits = JSON.parse(creditsAttr);
+                    } catch (e) { }
+                }
+
+                let contentHTML = `
+                    <div class="modal-header">
+                        <h3 class="modal-title">${title}</h3>
+                        <p class="modal-year">${year}</p>
+                    </div>
+                `;
+
+                if (desc) {
+                    contentHTML += `<p class="modal-desc">${desc}</p>`;
+                }
+
+                if (credits) {
+                    contentHTML += `<div class="modal-credits">`;
+                    for (const [role, name] of Object.entries(credits)) {
+                        contentHTML += `<div class="credit-item"><span class="credit-role">${role}</span> ${name}</div>`;
+                    }
+                    contentHTML += `</div>`;
+                }
+
+                if (mainImgSrc) {
+                    contentHTML += `<img src="${mainImgSrc}" alt="${title}" class="modal-main-img">`;
+                } else {
+                    contentHTML += `<div class="modal-main-img" style="aspect-ratio:16/9; display:flex; align-items:center; justify-content:center; border: 1px dashed var(--glass-border); color: var(--text-muted);">No Main Image Available</div>`;
+                }
+
+                if (extraImages.length > 0) {
+                    contentHTML += `<div class="modal-masonry">`;
+                    extraImages.forEach(src => {
+                        contentHTML += `<img src="${src}" class="masonry-item" alt="Extra Image" loading="lazy">`;
+                    });
+                    contentHTML += `</div>`;
+                } else {
+                    contentHTML += `
+                        <div class="modal-extra-images">
+                            <div class="modal-extra-img" style="border: 1px dashed var(--glass-border); display:flex; align-items:center; justify-content:center; color: var(--text-muted);">Extra Image Space 1</div>
+                            <div class="modal-extra-img" style="border: 1px dashed var(--glass-border); display:flex; align-items:center; justify-content:center; color: var(--text-muted);">Extra Image Space 2</div>
+                        </div>
+                    `;
+                }
+
+                modalBody.innerHTML = contentHTML;
+
+                modal.classList.add('show');
+                document.body.style.overflow = 'hidden';
+
+                // Attach click events for Lightbox
+                const modalImages = modalBody.querySelectorAll('img');
+                modalImages.forEach(img => {
+                    img.addEventListener('click', () => {
+                        openLightbox(img.src);
+                    });
+                });
+            });
+        });
+
+        // Close functions for Work Modal
+        const closeFunc = () => {
+            modal.classList.remove('show');
+            document.body.style.overflow = '';
+        };
+
+        if (closeModal) closeModal.addEventListener('click', closeFunc);
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeFunc();
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                if (lightbox && lightbox.classList.contains('show')) {
+                    closeLightboxFunc();
+                } else if (modal.classList.contains('show')) {
+                    closeFunc();
+                }
+            }
+        });
+    }
+
+    // Lightbox Logic
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+
+    let closeLightboxFunc;
+
+    if (lightbox && lightboxImg) {
+        const closeBtn = lightbox.querySelector('.close-lightbox');
+
+        const openLightbox = (src) => {
+            lightboxImg.src = src;
+            lightbox.classList.add('show');
+        };
+
+        closeLightboxFunc = () => {
+            lightbox.classList.remove('show');
+            // Wait for transition before clearing src
+            setTimeout(() => {
+                if (!lightbox.classList.contains('show')) lightboxImg.src = '';
+            }, 400);
+        };
+
+        if (closeBtn) closeBtn.addEventListener('click', closeLightboxFunc);
+
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox || e.target === lightboxImg) {
+                closeLightboxFunc();
+            }
+        });
+    }
+
 });
