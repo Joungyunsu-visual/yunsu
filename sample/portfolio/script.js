@@ -41,6 +41,63 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // ─── Works Grid Dynamic Rendering ────────────────────────────────────
+    const worksGrid = document.getElementById('works-grid');
+    const tabBtns = document.querySelectorAll('.tab-btn');
+
+    function buildCards(filter) {
+        worksGrid.innerHTML = '';
+        const filtered = WORKS.filter(w => w.category === filter);
+
+        filtered.forEach(work => {
+            const card = document.createElement('a');
+            card.className = 'work-card fade-in';
+            card.href = '#';
+            card.setAttribute('data-category', work.category);
+
+            // Store full-res images for modal (1600px)
+            if (work.images && work.images.length) {
+                const fullRes = work.images.map(u => cl(u, 'full'));
+                card.setAttribute('data-images', JSON.stringify(fullRes));
+            }
+            if (work.video)   card.setAttribute('data-video',   work.video);
+            if (work.desc)    card.setAttribute('data-desc',    work.desc);
+            if (work.credits) card.setAttribute('data-credits', JSON.stringify(work.credits));
+
+            // Thumbnail image (700px wide, auto format/quality)
+            const thumbSrc = cl(work.main, 'thumb');
+
+            const imageHTML = work.main
+                ? `<img src="${thumbSrc}" alt="${work.title}" style="width:100%;height:100%;object-fit:cover;">`
+                : `<span class="placeholder-label">Image</span>`;
+
+            card.innerHTML = `
+                <div class="work-image-placeholder">${imageHTML}</div>
+                <div class="work-meta">
+                    <span class="work-title">${work.title}</span>
+                    <span class="work-year">${work.year}</span>
+                </div>`;
+
+            worksGrid.appendChild(card);
+        });
+
+        // Re-attach click handlers to new cards
+        attachCardListeners();
+    }
+
+    // Tab click handler
+    tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            tabBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            buildCards(btn.getAttribute('data-filter'));
+        });
+    });
+
+    // Initial render: WORK tab
+    buildCards('work');
+
+
     // Language / 번역 토글 & Blur Reveal Effect
     const toggle = document.getElementById('lang-toggle');
     let currentLang = 'en'; // default
@@ -97,14 +154,23 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Work Modal Logic
-    const workCards = document.querySelectorAll('.work-card');
     const modal = document.getElementById('work-modal');
     const modalBody = document.getElementById('modal-body');
 
-    if (modal && modalBody) {
-        const closeModal = modal.querySelector('.close-modal');
+    function attachCardListeners() {
+        const newCards = worksGrid.querySelectorAll('.work-card');
 
-        workCards.forEach(card => {
+        // Observe for fade-in animation
+        newCards.forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            obs.observe(card);
+        });
+
+        if (!modal || !modalBody) return;
+
+        newCards.forEach(card => {
             card.addEventListener('click', (e) => {
                 e.preventDefault();
                 const titleElement = card.querySelector('.work-title');
@@ -134,6 +200,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     } catch (e) { }
                 }
 
+                const videoSrc = card.getAttribute('data-video') || '';
+
                 let contentHTML = `
                     <div class="modal-header">
                         <h3 class="modal-title">${title}</h3>
@@ -153,7 +221,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     contentHTML += `</div>`;
                 }
 
-                if (mainImgSrc) {
+                // Show video player if data-video is present, otherwise show main image
+                if (videoSrc) {
+                    contentHTML += `<video src="${videoSrc}" class="modal-main-img" controls playsinline style="background:#000;"></video>`;
+                } else if (mainImgSrc) {
                     contentHTML += `<img src="${mainImgSrc}" alt="${title}" class="modal-main-img">`;
                 } else {
                     contentHTML += `<div class="modal-main-img" style="aspect-ratio:16/9; display:flex; align-items:center; justify-content:center; border: 1px dashed var(--glass-border); color: var(--text-muted);">No Main Image Available</div>`;
@@ -186,17 +257,19 @@ document.addEventListener('DOMContentLoaded', () => {
                         openLightbox(img.src);
                     });
                 });
-            });
-        });
+            }); // end card click
+        }); // end newCards.forEach
+    } // end attachCardListeners
 
-        // Close functions for Work Modal
+    // Close modal — set up once
+    if (modal) {
+        const closeModal = modal.querySelector('.close-modal');
         const closeFunc = () => {
             modal.classList.remove('show');
             document.body.style.overflow = '';
         };
 
         if (closeModal) closeModal.addEventListener('click', closeFunc);
-
         modal.addEventListener('click', (e) => {
             if (e.target === modal) closeFunc();
         });
